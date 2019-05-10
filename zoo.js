@@ -1,9 +1,6 @@
 ////////////////////////// DEFINING GLOBAL VARIABLES  \\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-let animalsInWorld = new Map();
-
-
-
+let animalsInWorld = Object.create(null);
 
 ///////////////////////////// DEFINING ANIMALS  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -43,17 +40,11 @@ class Birds {
           
 };
 
-
-//for (let animal in animalsInWorld) {...};
-
-
 class Mamals { };
 
 class Fish { };
 
 class Reptiles { };
-
-//console.log(Birds.constructor === Birds);
 
 class ZooObjects { 
 
@@ -77,26 +68,28 @@ class ZooPersonel {
     }
 };
 
+function CreateAnimal(uid,  type, species, sex, age, name) {
 
+    animalsInWorld[uid, type, species, sex, age, name] = new type(uid, type, species, sex, age, name);
+    
+    
+    };
 
 ////////////////////////////////// CODE EXECUTION \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-CreateAnimal("1", Birds, "Gull", "Male", "2", "Bob");
-CreateAnimal("2", Birds, "Gull", "Female", "4", "Jessica");
-CreateAnimal("3", Birds, "Swallow", "Female", "3", "Tiffany");
+CreateAnimal(1, Birds, "Gull", "Male", 2, "Bob");
+CreateAnimal(2, Birds, "Gull", "Female", 4, "Jessica");
+CreateAnimal(33, Birds, "Swallow", "Female", 3, "Tiffany");
 
-function CreateAnimal(uid, type, species, sex, age, name) {
-
-animalsInWorld[uid, type, species, sex, age, name] = new type(uid, type, species, sex, age, name);
-
-};
-
-console.log(animalsInWorld);
 
 
 for (var an in animalsInWorld)
 {
     document.getElementsByClassName("box")[0].innerHTML += an;
-    console.log(an);
-}
+ //   console.log(an);
+ var nameList = ("animalsInWorld." + an + ".uid");
+    console.log(nameList);
+};
 
-console.log(`1 is ${animalsInWorld.get("Bob")}`);
+console.log(animalsInWorld);
+console.log(animalsInWorld.Bob.sex);
+
