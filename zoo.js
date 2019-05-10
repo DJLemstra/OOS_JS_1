@@ -1,13 +1,15 @@
 ////////////////////////// DEFINING GLOBAL VARIABLES  \\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-let animalsInWorld = Object.create(null);
+let animalsInWorld = [];
+
 
 ///////////////////////////// DEFINING ANIMALS  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-class ZooAnimals { 
+class ZooAnimal { 
 
     constructor(type)  {
         this.type = type;
+    
     }
 
     eat() {
@@ -23,11 +25,13 @@ class ZooAnimals {
     }
 };
 
-class Birds { 
 
-    constructor(uid, type, species, sex, age, name)  {
-        this.uid = uid;
-        this.type = type;
+class Bird extends ZooAnimal { 
+
+    constructor(id, type, species, sex, age, name)  {
+        super();
+        this.id = id;
+        this.type = Bird;
         this.species = species
         this.sex = sex;
         this.age = age;
@@ -68,17 +72,17 @@ class ZooPersonel {
     }
 };
 
-function CreateAnimal(uid,  type, species, sex, age, name) {
+function CreateAnimal(id, type, species, sex, age, name) {
 
-    animalsInWorld[uid, type, species, sex, age, name] = new type(uid, type, species, sex, age, name);
+    animalsInWorld[id, type, species, sex, age, name] = new type(id, type, species, sex, age, name);
     
     
     };
 
 ////////////////////////////////// CODE EXECUTION \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-CreateAnimal(1, Birds, "Gull", "Male", 2, "Bob");
-CreateAnimal(2, Birds, "Gull", "Female", 4, "Jessica");
-CreateAnimal(33, Birds, "Swallow", "Female", 3, "Tiffany");
+CreateAnimal(1, Bird, "Gull", "Male", 2, "Bob");
+CreateAnimal(2, Bird, "Gull", "Female", 4, "Jessica");
+CreateAnimal(33, Bird, "Swallow", "Female", 3, "Tiffany");
 
 
 
@@ -86,10 +90,11 @@ for (var an in animalsInWorld)
 {
     document.getElementsByClassName("box")[0].innerHTML += an;
  //   console.log(an);
- var nameList = ("animalsInWorld." + an + ".uid");
-    console.log(nameList);
+var nameList = ("animalsInWorld." + an + ".id"); /////waarom werkt dit niet?
+  console.log(nameList);
 };
 
 console.log(animalsInWorld);
-console.log(animalsInWorld.Bob.sex);
+//console.log(animalsInWorld.Bird.sex);
+
 
