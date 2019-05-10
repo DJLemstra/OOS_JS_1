@@ -1,86 +1,78 @@
 ////////////////////////// DEFINING GLOBAL VARIABLES  \\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-let animalsInWorld = [];
+let animalsInWorld = new Map();
+
+
 
 
 ///////////////////////////// DEFINING ANIMALS  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-function ZooAnimals() { 
+class ZooAnimals { 
 
-}
+    constructor(type)  {
+        this.type = type;
+    }
 
-ZooAnimals.prototype = {
-    constructor: ZooAnimals,
-
-    eat: function() {
+    eat() {
         console.log("nom nom nom");
-    },
+    }
 
-    die: function() {
+    die() {
         console.log("I died?!?");
-    },
+    }
 
-    describe: function() {
+    describe() {
         console.log("My name is " + this.name + " and im a " + this.sex + " " + this.species);
     }
 };
 
-function Birds(uid, type, species, sex, age, name) { 
+class Birds { 
 
-    this.uid = uid;
-    this.type = Birds;
-    this.species = species
-    this.sex = sex;
-    this.age = age;
-    this.name = name;
-    this.numLegs = 2;
-    this.canFly = true;
+    constructor(uid, type, species, sex, age, name)  {
+        this.uid = uid;
+        this.type = type;
+        this.species = species
+        this.sex = sex;
+        this.age = age;
+        this.name = name;
+        this.numLegs = 2;
+        this.canFly = true;
+    }
+
+
           
 };
 
-Birds.prototype = Object.create(ZooAnimals.prototype);
-Birds.prototype.constructor = Birds;
 
 //for (let animal in animalsInWorld) {...};
 
 
-function Mamals() { };
+class Mamals { };
 
-Mamals.prototype = Object.create(ZooAnimals.prototype);
-Mamals.prototype.constructor = Mamals;
+class Fish { };
 
+class Reptiles { };
 
-function Fish() { };
+//console.log(Birds.constructor === Birds);
 
-Fish.prototype = Object.create(ZooAnimals.prototype);
-Fish.prototype.constructor = Fish;
+class ZooObjects { 
 
-
-function Reptiles() { };
-
-Reptiles.prototype = Object.create(ZooAnimals.prototype);
-Reptiles.prototype.constructor = Reptiles;
-
-
-//console.log(Birds.constructor === ZooAnimals); // => true
-
- 
-function ZooObjects() { }
-
-ZooObjects.prototype = {
-    constructor: ZooObjects,
-
-    describe: function() {
+    constructor(type) {
+        this.type = type;
+    };
+    
+    describe() {
         console.log("My name is " + this.name + " and im a " + this.sex + " " + this.species);
     }
 };
 
-function ZooPersonel() { }
+class ZooPersonel { 
 
-ZooPersonel.prototype = {
-    constructor: ZooPersonel,
-
-    describe: function() {
+    constructor(type) {
+        this.type = type;
+    }
+    
+    describe() {
         console.log("My name is " + this.name + " and im a " + this.sex + " " + this.species);
     }
 };
@@ -94,18 +86,11 @@ CreateAnimal("3", Birds, "Swallow", "Female", "3", "Tiffany");
 
 function CreateAnimal(uid, type, species, sex, age, name) {
 
-animalsInWorld[uid, type, species, sex, age, name] = new type(uid, species, sex, age, name);
+animalsInWorld[uid, type, species, sex, age, name] = new type(uid, type, species, sex, age, name);
 
 };
 
-var newArray = animalsInWorld.map( function( el ){ 
-    return el.name;
-
-   });
-
 console.log(animalsInWorld);
-//animalsInWorld.toString();
-//console.log(animalsInWorld);
 
 
 for (var an in animalsInWorld)
@@ -113,3 +98,5 @@ for (var an in animalsInWorld)
     document.getElementsByClassName("box")[0].innerHTML += an;
     console.log(an);
 }
+
+console.log(`1 is ${animalsInWorld.get("Bob")}`);
