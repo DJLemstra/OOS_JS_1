@@ -21,21 +21,21 @@ class ZooAnimal {
     }
 
     describe() {
-        console.log("My name is " + this.name + " and im a " + this.sex + " " + this.species);
+        console.log("My naam is " + this.naam + " and im a " + this.sex + " " + this.species);
     }
 };
 
 
 class Bird extends ZooAnimal { 
 
-    constructor(id, type, species, sex, age, name)  {
+    constructor(id, type, species, sex, age, naam)  {
         super();
         this.id = id;
         this.type = Bird;
         this.species = species
         this.sex = sex;
         this.age = age;
-        this.name = name;
+        this.naam = naam;
         this.numLegs = 2;
         this.canFly = true;
     }
@@ -57,7 +57,7 @@ class ZooObjects {
     };
     
     describe() {
-        console.log("My name is " + this.name + " and im a " + this.sex + " " + this.species);
+        console.log("My naam is " + this.naam + " and im a " + this.sex + " " + this.species);
     }
 };
 
@@ -68,33 +68,32 @@ class ZooPersonel {
     }
     
     describe() {
-        console.log("My name is " + this.name + " and im a " + this.sex + " " + this.species);
+        console.log("My naam is " + this.naam + " and im a " + this.sex + " " + this.species);
     }
 };
 
-function CreateAnimal(id, type, species, sex, age, name) {
+////////////////////////////////// ANIMAL BREEDER \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    animalsInWorld[id, type, species, sex, age, name] = new type(id, type, species, sex, age, name);
-    
-    
-    };
+function CreateAnimal(id, type, species, sex, age, naam) {
+
+    animalsInWorld[id] = new type(id, type, species, sex, age, naam);
+        
+};
 
 ////////////////////////////////// CODE EXECUTION \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-CreateAnimal(1, Bird, "Gull", "Male", 2, "Bob");
-CreateAnimal(2, Bird, "Gull", "Female", 4, "Jessica");
-CreateAnimal(33, Bird, "Swallow", "Female", 3, "Tiffany");
+CreateAnimal(0, Bird, "Gull", "Male", 2, "Bob");
+CreateAnimal(1, Bird, "Gull", "Female", 4, "Jessica");
+CreateAnimal(2, Bird, "Swallow", "Female", 3, "Tiffany");
 
 
 
 for (var an in animalsInWorld)
 {
     document.getElementsByClassName("box")[0].innerHTML += an;
- //   console.log(an);
-var nameList = ("animalsInWorld." + an + ".id"); /////waarom werkt dit niet?
-  console.log(nameList);
+
 };
 
 console.log(animalsInWorld);
-//console.log(animalsInWorld.Bird.sex);
+console.log(animalsInWorld[0]);
 
 
